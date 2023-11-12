@@ -64,4 +64,17 @@ defmodule Aula3 do
   def produto_m_n(m, n) do
     m * produto_m_n(m + 1, n)
   end
+
+  def potencia(_, 0), do: 1
+
+  def potencia(b, e) do
+    b * potencia(b, e - 1)
+  end
+
+  def fib(0), do: 0
+  def fib(1), do: 1
+
+  def fib(n) do
+    fib(n - 1) + fib(n - 2)
+  end
 end
