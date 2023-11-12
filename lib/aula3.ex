@@ -26,4 +26,42 @@ defmodule Aula3 do
   def maior_venda(0), do: vendas(0)
 
   def maior_venda(n), do: maxi(vendas(n), maior_venda(n - 1))
+
+  def semana_max_venda(0), do: 0
+
+  def semana_max_venda(n) do
+    if maior_venda(n) == vendas(n) do
+      n
+    else
+      semana_max_venda(n - 1)
+    end
+  end
+
+  def zero_vendas(n) when n < 0, do: -1
+
+  def zero_vendas(n) do
+    if vendas(n) == 0 do
+      n
+    else
+      zero_vendas(n - 1)
+    end
+  end
+
+  def acha_semana(_, n) when n < 0, do: -1
+
+  def acha_semana(s, n) do
+    if vendas(n) == s do
+      n
+    else
+      acha_semana(s, n - 1)
+    end
+  end
+
+  def produto_m_n(m, n) when m > n, do: :error
+
+  def produto_m_n(m, n) when m == n, do: m
+
+  def produto_m_n(m, n) do
+    m * produto_m_n(m + 1, n)
+  end
 end
